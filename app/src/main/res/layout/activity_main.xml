@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+    android:id="@+id/message"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:text="@string/basic_info"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/et1"
+        app:layout_constraintTop_toBottomOf="@+id/message"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/problem_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/problem_speed"/>
+        <EditText
+            android:id="@+id/problem_speed_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|numberDecimal"
+            android:hint="unit:km/h"
+            android:maxLines="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/et2"
+        app:layout_constraintTop_toBottomOf="@+id/et1"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/wheel_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wheel_r"/>
+        <EditText
+            android:id="@+id/wheel_r_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|numberDecimal"
+            android:hint="unit:m"
+            android:maxLines="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/et3"
+        app:layout_constraintTop_toBottomOf="@+id/et2"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rear_axle_t_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rear_axle_t_ratio"/>
+        <EditText
+            android:id="@+id/rear_axle_t_ratio_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="unit:%"
+            android:inputType="number|numberDecimal"
+            android:maxLines="1"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/next_step"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+</android.support.constraint.ConstraintLayout>

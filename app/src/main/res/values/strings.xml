@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">汽车振动诊断 v1.0</string>
+    <string name="title_home">行驶抖动</string>
+    <string name="title_dashboard">怠速抖动</string>
+    <string name="title_notifications">关于</string>
+    <string name="next_step">下一步</string>
+    <string name="basic_info">基本信息</string>
+    <string name="problem_speed">问题车速</string>
+    <string name="wheel_r">车轮半径</string>
+    <string name="rear_axle_t_ratio">后桥传动比</string>
+</resources>
