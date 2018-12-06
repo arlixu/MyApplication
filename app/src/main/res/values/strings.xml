@@ -9,7 +9,10 @@
     <string name="wheel_r">车轮半径</string>
     <string name="rear_axle_t_ratio">后桥传动比</string>
     <string name="title_activity_run_collect">数据采集</string>
+    <string name="collect_introduce">点击绿色按钮采集</string>
     <string name="collect_speed_1">Speed 30km/h</string>
     <string name="collect_speed_2">Speed 40km/h</string>
     <string name="collect_speed_3">Speed 70km/h</string>
+    <drawable name="clr_normal">#fc1de192</drawable>
+    <drawable name="clr_pressed">#d1cfce</drawable>
 </resources>
