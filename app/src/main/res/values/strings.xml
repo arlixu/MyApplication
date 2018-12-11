@@ -13,6 +13,9 @@
     <string name="collect_speed_1">Speed 30km/h</string>
     <string name="collect_speed_2">Speed 40km/h</string>
     <string name="collect_speed_3">Speed 70km/h</string>
+    <string name="collecting">采集中</string>
+    <string name="collect_finished">采集完毕</string>
     <drawable name="clr_normal">#fc1de192</drawable>
-    <drawable name="clr_pressed">#d1cfce</drawable>
+    <drawable name="clr_collecting">#df8a13</drawable>
+    <drawable name="clr_finished">#d1cfce</drawable>
 </resources>

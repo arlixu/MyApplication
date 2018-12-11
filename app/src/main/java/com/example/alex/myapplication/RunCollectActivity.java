@@ -26,24 +26,34 @@ public class RunCollectActivity extends AppCompatActivity {
         Button collectSpeed2 = findViewById(R.id.bt_collect_speed_2);
         Button collectSpeed3 = findViewById(R.id.bt_collect_speed_3);
         collectSpeed1.setBackgroundResource(R.drawable.clr_normal);
-        collectSpeed2.setBackgroundResource(R.drawable.clr_pressed);
-        collectSpeed2.setEnabled(false);
-        collectSpeed3.setBackgroundResource(R.drawable.clr_pressed);
-        collectSpeed3.setEnabled(false);
+        collectSpeed2.setBackgroundResource(R.drawable.clr_normal);
+        collectSpeed3.setBackgroundResource(R.drawable.clr_normal);
 
         collectSpeed1.setOnClickListener(rOnClickListener);
         collectSpeed2.setOnClickListener(rOnClickListener);
         collectSpeed3.setOnClickListener(rOnClickListener);
     }
+
     private View.OnClickListener rOnClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int id = v.getId();
             //如果按钮状态为UNCLICK
-            if(buttonStatus.get(id).equals(ButtonConst.UNCLICK))
+            Object status = buttonStatus.get(id);
+            if(status.equals(ButtonConst.UNCLICK))
             {
-              ////点采集后。置为采集中。enable true不变， ,颜色标黄。采集的百分比写在后面。
-//                (Button) v.set
+                ////点采集后。置为采集中。enable true不变， ,颜色标黄。采集的百分比写在后面。
+                buttonStatus.put(id,ButtonConst.START);
+                ((Button)v).setText(R.string.collecting);
+                ((Button)v).setBackgroundResource(R.drawable.clr_collecting);
+                //TODO 向硬件发送USB串口命令，启动收集。这里应该是启动一个服务。
+
+            }else if(status.equals(ButtonConst.START))
+            {
+                buttonStatus.put(id,ButtonConst.STOP);
+                ((Button)v).setText(R.string.collect_finished);
+                ((Button)v).setBackgroundResource(R.drawable.clr_finished);
+                //TODO 断开和usb的链接。
             }
         }
     };
