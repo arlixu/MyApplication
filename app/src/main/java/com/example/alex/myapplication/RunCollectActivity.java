@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.alex.myapplication.constants.ButtonConst;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class RunCollectActivity extends AppCompatActivity {
     //使用map来存按钮状态。
@@ -43,17 +45,36 @@ public class RunCollectActivity extends AppCompatActivity {
             if(status.equals(ButtonConst.UNCLICK))
             {
                 ////点采集后。置为采集中。enable true不变， ,颜色标黄。采集的百分比写在后面。
-                buttonStatus.put(id,ButtonConst.START);
+                buttonStatus.put(id,ButtonConst.COLLECTING);
                 ((Button)v).setText(R.string.collecting);
                 ((Button)v).setBackgroundResource(R.drawable.clr_collecting);
+                //暂时不允许点击另外两个
+                Set buttons = buttonStatus.keySet();
+                for (Object button : buttons) {
+                    if((Integer)button!=id)
+                    {
+                        findViewById((Integer)button).setEnabled(false);
+                    }
+                }
                 //TODO 向硬件发送USB串口命令，启动收集。这里应该是启动一个服务。
 
-            }else if(status.equals(ButtonConst.START))
+            }else if(status.equals(ButtonConst.COLLECTING))
             {
-                buttonStatus.put(id,ButtonConst.STOP);
+                buttonStatus.put(id,ButtonConst.COLLECT_FINISHED);
                 ((Button)v).setText(R.string.collect_finished);
                 ((Button)v).setBackgroundResource(R.drawable.clr_finished);
                 //TODO 断开和usb的链接。
+                //其他的要是true
+                Set buttons = buttonStatus.keySet();
+                for (Object button : buttons) {
+                    if((Integer)button!=id)
+                    {
+                        findViewById((Integer) button).setEnabled(true);
+                    }
+                }
+            }else
+            {
+                Toast.makeText(RunCollectActivity.this,R.string.collect_finished_toast,Toast.LENGTH_SHORT).show();
             }
         }
     };
